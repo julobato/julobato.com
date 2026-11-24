@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { DM_Sans } from 'next/font/google'
 import { LangProvider } from '@/components/LangProvider'
+import { SiteAnalytics } from '@/components/SiteAnalytics'
 import './globals.css'
 
 // To try another Google font, swap DM_Sans here (e.g. Inter, Manrope, Figtree).
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <LangProvider>{children}</LangProvider>
+        <SiteAnalytics />
       </body>
     </html>
   )
