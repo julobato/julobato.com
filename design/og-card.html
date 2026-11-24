@@ -1,0 +1,59 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=block" rel="stylesheet">
+<style>
+  html, body { margin: 0; }
+  .card {
+    position: relative; overflow: hidden;
+    width: 1200px; height: 627px;
+    background: #141414; color: #EEECE7;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .code { position: absolute; left: 820px; top: 18px; margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 15px; line-height: 25px;
+          white-space: pre; color: rgba(238,236,231,0.20);
+          -webkit-mask-image: linear-gradient(90deg, rgba(0,0,0,.5) 0%, #000 25%);
+          mask-image: linear-gradient(90deg, rgba(0,0,0,.5) 0%, #000 25%); }
+  .code .k { color: rgba(253,181,0,0.55); }
+  .code .f { color: rgba(238,236,231,0.38); }
+  .code .c { color: rgba(238,236,231,0.13); font-style: italic; }
+  .name { position: absolute; left: 88px; top: 66px; display: flex; align-items: center; gap: 16px; font-size: 19px; font-weight: 700; letter-spacing: 0.06em; }
+  .avatar { width: 50px; height: 50px; border-radius: 50%; background: #FDB500; display: grid; place-items: center; }
+  .avatar img { width: 24px; filter: brightness(0); opacity: 0.9; }
+  .main { position: absolute; left: 88px; top: 190px; }
+  h1 { margin: 0; font-size: 92px; line-height: 1.02; font-weight: 500; letter-spacing: -0.035em; }
+  .u { text-decoration: underline; text-decoration-color: #FDB500; text-decoration-thickness: 9px; text-underline-offset: 8px; text-decoration-skip-ink: none; }
+  .role { margin-top: 30px; font-size: 27px; color: #8F8D88; }
+  .url { position: absolute; left: 88px; bottom: 76px; font-size: 25px; font-weight: 700; }
+</style></head>
+<body><div class="card">
+  <pre class="code"><span class="k">from</span> decimal <span class="k">import</span> Decimal, getcontext
+
+
+<span class="k">def</span> <span class="f">arctan_inv</span>(x: int, digits: int) -&gt; Decimal:
+<span class="c">    &quot;&quot;&quot;arctan(1/x) as a power series.&quot;&quot;&quot;</span>
+    <span class="f">getcontext</span>().prec = digits + 10
+    x = <span class="f">Decimal</span>(x)
+    term = total = 1 / x
+    n, sign = 1, -1
+    <span class="k">while</span> <span class="f">abs</span>(term) &gt; <span class="f">Decimal</span>(10) ** -(digits + 5):
+        term /= x * x
+        n += 2
+        total += sign * term / n
+        sign = -sign
+    <span class="k">return</span> total
+
+
+<span class="k">def</span> <span class="f">pi</span>(digits: int = 1000) -&gt; Decimal:
+<span class="c">    # Machin, 1706: π/4 = 4·arctan(1/5) − arctan(1/239)</span>
+    <span class="k">return</span> 4 * (4 * <span class="f">arctan_inv</span>(5, digits) - <span class="f">arctan_inv</span>(239, digits))
+
+
+<span class="k">if</span> __name__ == &quot;__main__&quot;:
+    <span class="f">print</span>(<span class="f">pi</span>(50))  <span class="c"># 3.14159265358979323846264338327950288419716939937510</span></pre>
+  <div class="name"><span class="avatar"><img src="../public/logo.png" alt=""></span>JULIANNE LOBATO</div>
+  <div class="main">
+    <h1>Tech-driven.<br>Creatively <span class="u">inspired</span>.</h1>
+    <div class="role">Software Engineer · Lisbon</div>
+  </div>
+  <div class="url">julobato.com</div>
+</div></body></html>
