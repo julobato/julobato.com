@@ -1,3 +1,6 @@
+/** The project's source code. */
+export const REPO_URL = 'https://github.com/julobato/DiarioLX'
+
 /** The full project report, published on LinkedIn. */
 export const REPORT_URL = 'https://www.linkedin.com/in/julianne-lobato/overlay/1787671469215/single-media-viewer/?profileId=ACoAAC_lHFEBzceM-JpqDQZWhKPLikl3vqh44_0'
 
@@ -87,7 +90,6 @@ export const PERMISSIONS: Role[] = ['contributor', 'contributor', 'contributor',
 export const ROLE_ORDER: Role[] = ['contributor', 'editor', 'admin']
 
 const en = {
-  postLink: 'DiárioLX, from draft to reader',
   hero: {
     sheetTitle: 'DiárioLX',
     sheetLede: 'The platform behind a digital newspaper.',
@@ -98,8 +100,8 @@ const en = {
       ['When', 'Presented in July 2026, graded 18/20']
     ],
     story: 'The story',
-    report: 'Report',
-    reportLink: 'Read the full report',
+    code: 'Code',
+    reportLink: 'Full report',
   },
   toc: ['TL;DR', 'Architecture', 'Decisions', 'Uploads', 'Workflow', 'Security', 'CI/CD', 'Details', 'Improvements'],
   summary: [
@@ -261,7 +263,6 @@ const en = {
 }
 
 const pt: typeof en = {
-  postLink: 'DiárioLX, do rascunho ao leitor',
   hero: {
     sheetTitle: 'DiárioLX',
     sheetLede: 'A plataforma por trás de um jornal digital.',
@@ -272,8 +273,8 @@ const pt: typeof en = {
       ['Quando', 'Apresentado em julho de 2026, nota 18/20']
     ],
     story: 'A história',
-    report: 'Relatório',
-    reportLink: 'Ler o relatório completo',
+    code: 'Código',
+    reportLink: 'Relatório completo',
   },
   toc: ['TL;DR', 'Arquitetura', 'Decisões', 'Uploads', 'Fluxo', 'Segurança', 'CI/CD', 'Detalhes', 'Melhorias'],
   summary: [

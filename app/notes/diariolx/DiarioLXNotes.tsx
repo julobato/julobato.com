@@ -6,7 +6,7 @@ import { Arrow, Node } from '@/components/Diagram'
 import { useLang } from '@/components/LangProvider'
 import { rich } from '@/components/Rich'
 import { Topbar } from '@/components/Topbar'
-import { NOTES, PERMISSIONS, REPORT_URL, ROLE_ORDER, TRANSITIONS, UPLOAD_CODE, type NodeId, type Role } from '@/lib/notes/diariolx'
+import { NOTES, PERMISSIONS, REPO_URL, REPORT_URL, ROLE_ORDER, TRANSITIONS, UPLOAD_CODE, type NodeId, type Role } from '@/lib/notes/diariolx'
 import type { Key } from '@/lib/i18n'
 
 const SECTIONS = ['tldr', 'architecture', 'decisions', 'uploads', 'workflow', 'security', 'cicd', 'details', 'changes']
@@ -134,15 +134,12 @@ export function DiarioLXNotes() {
                   <dd>{value}</dd>
                 </div>
               ))}
-              <div>
-                <dt>{n.hero.story}</dt>
-                <dd><Link href="/blog/diariolx">{rich(n.postLink)}</Link></dd>
-              </div>
-              <div>
-                <dt>{n.hero.report}</dt>
-                <dd><a href={REPORT_URL} target="_blank" rel="noopener noreferrer">{n.hero.reportLink} ↗</a></dd>
-              </div>
             </dl>
+            <div className="project-links">
+              <Link href="/blog/diariolx">{n.hero.story} →</Link>
+              <a href={REPO_URL} target="_blank" rel="noopener noreferrer">{n.hero.code} ↗</a>
+              <a href={REPORT_URL} target="_blank" rel="noopener noreferrer">{n.hero.reportLink} ↗</a>
+            </div>
           </header>
 
           <section id="tldr" className="notes-section notes-tldr-section">
