@@ -18,7 +18,9 @@ export function LangProvider({ children }: { children: React.ReactNode }) {
     try {
       const saved = localStorage.getItem('lang')
       if (saved === 'en' || saved === 'pt') setLangState(saved)
-    } catch {}
+    } catch {
+      // Storage can be unavailable (e.g. private mode); the default still works.
+    }
   }, [])
 
   useEffect(() => {
@@ -29,7 +31,9 @@ export function LangProvider({ children }: { children: React.ReactNode }) {
     setLangState(next)
     try {
       localStorage.setItem('lang', next)
-    } catch {}
+    } catch {
+      // Storage can be unavailable (e.g. private mode); the default still works.
+    }
   }, [])
 
   const t = useCallback((key: Key) => I18N[lang][key], [lang])

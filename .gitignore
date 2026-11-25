@@ -5,3 +5,8 @@ next-env.d.ts
 *.tsbuildinfo
 .vercel
 .env*
+
+# Playwright
+/test-results
+/playwright-report
+/blob-report

@@ -17,7 +17,9 @@ export function Topbar() {
     document.documentElement.dataset.theme = next
     try {
       localStorage.setItem('theme', next)
-    } catch {}
+    } catch {
+      // Storage can be unavailable (e.g. private mode); the default still works.
+    }
     setTheme(next)
   }
 
