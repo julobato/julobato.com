@@ -9,8 +9,9 @@ const sans = DM_Sans({ subsets: ['latin', 'latin-ext'], variable: '--font-sans',
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://julobato.com'),
-  title: { default: 'Julianne Lobato', template: '%s · Julianne Lobato' },
-  description: 'Julianne Lobato, software engineer in Lisbon.',
+  title: { default: 'Julianne Lobato · Backend and Full-Stack Software Engineer', template: '%s · Julianne Lobato' },
+  description:
+    'Software engineer in Lisbon with 6+ years building backend systems and full-stack apps: integrations, data pipelines, and the automation in between.',
   openGraph: { siteName: 'Julianne Lobato', type: 'website' },
   twitter: { card: 'summary_large_image' }
 }
