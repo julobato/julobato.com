@@ -4,6 +4,7 @@ import Link from 'next/link'
 import type { Post } from '@/lib/posts'
 import { Month, ReadTime } from './Dates'
 import { useLang } from './LangProvider'
+import { rich } from './Rich'
 import { Topbar } from './Topbar'
 
 export function PostLayout({ post, children }: { post: Post; children: React.ReactNode }) {
@@ -14,7 +15,7 @@ export function PostLayout({ post, children }: { post: Post; children: React.Rea
       <article className="post-article">
         <div className="post-head">
           <span className="small muted"><Month value={post.month} /> · <ReadTime minutes={post.minutes} /></span>
-          <h1>{t(post.title)}</h1>
+          <h1>{rich(t(post.title))}</h1>
         </div>
         <div className="post-body">{children}</div>
       </article>

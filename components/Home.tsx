@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { POSTS } from '@/lib/posts'
 import { Duration, Month, Range } from './Dates'
+import { rich } from './Rich'
 import { useLang } from './LangProvider'
 import { Topbar } from './Topbar'
 
@@ -28,7 +29,7 @@ export function Home() {
 
           <article className="job">
             <div className="job-head">
-              <a className="job-name" href="https://gapstars.net">Gapstars ↗</a>
+              <a target="_blank" rel="noopener noreferrer" className="job-name" href="https://gapstars.net">Gapstars ↗</a>
               <span className="small muted"><Duration from="2024-11" /></span>
             </div>
             <p>{t('gapstarsDesc')}</p>
@@ -59,12 +60,30 @@ export function Home() {
         </section>
 
         <section className="section">
+          <h2>{t('projects')}</h2>
+          <article className="job">
+            <div className="job-head">
+              <strong className="project-name">{rich('DiárioLX')}</strong>
+              <span className="small muted">2026</span>
+            </div>
+            <p>{t('dlxCard')}</p>
+            <ul className="pills">
+              {['Kotlin', 'Spring Boot', 'React', 'PostgreSQL', 'SeaweedFS'].map((s) => <li key={s}>{s}</li>)}
+            </ul>
+            <div className="project-links">
+              <Link href="/blog/diariolx">{t('storyLink')} →</Link>
+              <Link href="/notes/diariolx">{t('notesLink')} →</Link>
+            </div>
+          </article>
+        </section>
+
+        <section className="section">
           <h2>{t('education')}</h2>
           <div className="row">
             <span className="small muted">2023 — 2026</span>
             <div>
               <strong>{t('iselCourse')}</strong>
-              <a className="muted" href="https://www.isel.pt">Instituto Superior de Engenharia de Lisboa ↗</a>
+              <a target="_blank" rel="noopener noreferrer" className="muted" href="https://www.isel.pt">Instituto Superior de Engenharia de Lisboa ↗</a>
               <span>{t('scholarship')}</span>
             </div>
           </div>
@@ -72,7 +91,7 @@ export function Home() {
             <span className="small muted">2017 — 2023</span>
             <div>
               <strong>{t('uspCourse')}</strong>
-              <a className="muted" href="https://www.ime.usp.br">Instituto de Matemática e Estatística, Universidade de São Paulo ↗</a>
+              <a target="_blank" rel="noopener noreferrer" className="muted" href="https://www.ime.usp.br">Instituto de Matemática e Estatística, Universidade de São Paulo ↗</a>
             </div>
           </div>
         </section>
@@ -82,7 +101,9 @@ export function Home() {
           {POSTS.map((post) => (
             <div className="row" key={post.slug}>
               <span className="small muted"><Month value={post.month} /></span>
-              <Link href={`/blog/${post.slug}`}>{t(post.title)}</Link>
+              <div>
+                <Link href={`/blog/${post.slug}`}>{rich(t(post.title))}</Link>
+              </div>
             </div>
           ))}
         </section>
@@ -90,10 +111,10 @@ export function Home() {
 
       <footer>
         <a href="mailto:contato@julobato.com">contato@julobato.com</a>
-        <a href="https://github.com/julobato/">GitHub ↗</a>
-        <a href="https://www.linkedin.com/in/julianne-lobato/">LinkedIn ↗</a>
-        <a href="https://instagram.com/arakonfilm/">Instagram ↗</a>
-        <a href="https://vsco.co/jlo/">VSCO ↗</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/julobato/">GitHub ↗</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/julianne-lobato/">LinkedIn ↗</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://instagram.com/arakonfilm/">Instagram ↗</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://vsco.co/jlo/">VSCO ↗</a>
       </footer>
     </div>
   )
